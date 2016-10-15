@@ -18,12 +18,12 @@ class ViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let context = appDelegate.persistentContainer.viewContext
-        
+      /*
         let newUser = NSEntityDescription.insertNewObject(forEntityName: "Users", into: context)
         
-        newUser.setValue("Marisela", forKey: "username")
+        newUser.setValue("Bambam", forKey: "username")
         newUser.setValue("myPass", forKey: "password")
-        newUser.setValue(26, forKey: "age")
+        newUser.setValue(21, forKey: "age")
         
         do{
             
@@ -33,9 +33,11 @@ class ViewController: UIViewController {
             
         }catch{
             print("Error")
-        }
+        } */
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Users")
+        
+        //request.predicate = NSPredicate(format: "username = %@", "Falco")
         
         request.returnsObjectsAsFaults = false
         
@@ -48,9 +50,36 @@ class ViewController: UIViewController {
                 for result in results as! [NSManagedObject] {
                     
                     if let username = result.value(forKey: "username") as? String {
+                    
+                        /*
+                        context.delete(result)
+                        
+                        do{
+                            
+                            try context.save()
+                            
+                            
+                        }catch{
+                            print("Delete Failed")
+                        }
+                         
+                         */
+
+                        
+                       /* result.setValue("Falco", forKey: "username")
+                        
+                        do{
+                            
+                            try context.save()
+                            
+                            print("Saved")
+                            
+                        }catch{
+                            print("Rename Failed")
+                        }
+                    */
                         
                         print(username)
-                    
                     }
                     
                     
